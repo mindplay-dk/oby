@@ -54,6 +54,7 @@ const readable = <T> ( value: IObservable<T> ): ObservableReadonly<T> => {
 
 const writable = <T> ( value: IObservable<T> ): Observable<T> => {
   const fn = writableFunction.bind ( value as any ) as ObservableReadonly<T>; //TSC
+  Object.setPrototypeOf(fn, value);
   fn[SYMBOL_OBSERVABLE] = true;
   fn[SYMBOL_OBSERVABLE_WRITABLE] = value;
   return fn;

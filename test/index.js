@@ -4223,6 +4223,20 @@ describe ( 'oby', () => {
 
     });
 
+    it ( 'exposes get, set and update methods', t => {
+
+      const o = observable ();
+
+      o.set ( 123 );
+
+      t.is ( o.get (), 123 );
+
+      o.update ( v => v + 1 );
+
+      t.is ( o.get (), 124 );
+
+    });
+
   });
 
   describe ( 'owner', it => {
